@@ -25,4 +25,18 @@ public abstract class Animal implements MedicalCare {
     public abstract void count();
 
     public abstract void calculateFoodRation();
+
+    @Override
+    public void registerCheckup(String details) {
+        String[] newArray = new String[medicalHistory.length * 2];
+        for (int i = 0; i < medicalHistory.length; i++) {
+            newArray[i] = medicalHistory[i];
+        }
+        this.medicalHistory = newArray;
+    }
+
+    @Override
+    public String[] getMedicalHistory() {
+        return this.medicalHistory;
+    }
 }
