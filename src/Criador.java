@@ -14,4 +14,14 @@ public class Criador extends Empleado {
     public void setWorkZone(String workZone) {
         this.workZone = workZone;
     }
+
+    public void alimentarAnimal(Animal animal, String comida) {
+        System.out.println(getName() + " alimentó a " + animal.getName() + " con " + comida);
+        animal.comer(comida);  // suponiendo método en Animal
+    }
+
+    @Override
+    public void realizarTrabajo() {
+        System.out.println(getName() + " está alimentando animales en " + workZone);
+    }
 }
