@@ -14,14 +14,14 @@ public class Veterinario extends Empleado{
         this.especialidad = especialidad;
     }
 
-    public void registrarChequeo(Animal animal, ControlMedico control) {
-        animal.registrarChequeo(control);
-        System.out.println(getNombre() + " registró un chequeo a " + animal.getNombre());
+    public void registerCheckup(Animal animal, ControlMedico control) {
+        animal.registerCheckup(control);
+        System.out.println(getId() + " registró un chequeo a " + animal.getId());
     }
 
     @Override
     public void realizarTrabajo() {
-        System.out.println(getNombre() + " está realizando chequeos veterinarios");
+        System.out.println(getId() + " está realizando chequeos veterinarios");
     }
 
 }
