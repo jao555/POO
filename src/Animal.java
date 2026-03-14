@@ -22,6 +22,10 @@ public abstract class Animal implements MedicalCare {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public abstract void count();
 
     public abstract void calculateFoodRation();

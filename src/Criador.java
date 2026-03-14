@@ -16,7 +16,7 @@ public class Criador extends Empleado {
     }
 
     public void alimentarAnimal(Animal animal, String comida) {
-        System.out.println(getName() + " alimentó a " + animal.getName() + " con " + comida);
+        System.out.println(getName() + " alimentó a " + animal.getId() + " con " + comida);
         animal.comer(comida);  // suponiendo método en Animal
     }
 
