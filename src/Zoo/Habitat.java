@@ -5,16 +5,16 @@ import java.sql.SQLOutput;
 public class Habitat {
     private int id;
     private int capacity;
-    public String type;
+    public String name;
     private CleaningDays cleaningDay;
     private int numberAnimals;
     private int addAnimal;
     private int removeAnimal;
 
-    public Habitat(int id, int capacity, String type, CleaningDays cleaningDay, int numberAnimals){
+    public Habitat(int id, int capacity, String name, CleaningDays cleaningDay, int numberAnimals){
         this.id=id;
         this.capacity=capacity;
-        this.type=type;
+        this.name=name;
         this.cleaningDay=cleaningDay;
         this.numberAnimals=numberAnimals;
     }
