@@ -5,7 +5,7 @@ public abstract class Animal implements MedicalCare {
     private double weight;
     private int age;
     private String species;
-    private String state;
+    private State state;
     private String[] medicalHistory;
     private int checkupCount;
     private static int totalAnimals = 0;
@@ -16,7 +16,7 @@ public abstract class Animal implements MedicalCare {
         this.weight = weight;
         this.age = age;
         this.species = species;
-        this.state = "despierto";
+        this.state = State.DESPIERTO;
         this.medicalHistory = new String[5];
         this.checkupCount = 0;
         this.active = true;
@@ -71,7 +71,7 @@ public abstract class Animal implements MedicalCare {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id);
     }
 
     @Override
@@ -81,7 +81,7 @@ public abstract class Animal implements MedicalCare {
                 ", weight=" + weight +
                 ", age=" + age +
                 ", species='" + species + '\'' +
-                ", state='" + state + '\'' +
+                ", state=" + state +
                 ", active=" + active +
                 '}';
     }
@@ -110,11 +110,11 @@ public abstract class Animal implements MedicalCare {
         return species;
     }
 
-    public String getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(State state) {
         this.state = state;
     }
 
