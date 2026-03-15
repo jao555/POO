@@ -30,7 +30,7 @@ public class Empleado {
         this.schedule = schedule;
     }
 
-    public void registrarTrabajo(String actividad){
+    public void realizarTrabajo(String actividad){
         System.out.println(name + "registro la actividad: "+ actividad);
     }
 

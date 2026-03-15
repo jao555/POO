@@ -20,7 +20,7 @@ public class Veterinario extends Empleado{
     }
 
     @Override
-    public void realizarTrabajo() {
+    public void realizarTrabajo(String actividad) {
         System.out.println(getId() + " está realizando chequeos veterinarios");
     }
 
