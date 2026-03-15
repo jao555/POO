@@ -1,15 +1,15 @@
-public class Empleado {
+public class Empleado extends Person{
     private int horaInicio;
     private int horaFinal;
-    private String name;
-    private int id;
+
     private String schedule;
 
-    public Empleado(int id,String name,String schedule){
-        this.id=id;
-        this.name=name;
-        this.schedule=schedule;
+
+    public Empleado(int id, String name, String schedule) {
+        super(name, id);
+        this.schedule = schedule;
     }
+
     public String getName() {
         return name;
     }
