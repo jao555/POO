@@ -1,11 +1,16 @@
+import java.util.Objects;
+
 public abstract class Animal implements MedicalCare {
     private String id;
     private double weight;
     private int age;
     private String species;
     private ControlMedico[] medicalHistory;
+    private State state;
     private int checkupCount;
     private String lastCheckup;
+    private static int totalAnimals = 0;
+    private boolean active;
 
     public Animal(String id, double weight, int age, String species){
         this.id = id;
@@ -13,39 +18,34 @@ public abstract class Animal implements MedicalCare {
         this.age = age;
         this.species = species;
         this.medicalHistory = new ControlMedico[2]; //Empieza con 2 registros
+        this.state = State.DESPIERTO;
         this.checkupCount = 0;
         this.lastCheckup = "None";
+        this.active = true;
+        totalAnimals++;
 
     }
     //getters and setters
     public double getWeight() {
         return weight;
     }
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
     public int getAge() {
         return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
     }
     public String getSpecies() {
         return species;
     }
-    public void setSpecies(String species) {
-        this.species = species;
-    }
     public String getId() {
         return id;
-    }
-    public void setId(String id) {
-        this.id = id;
     }
 
     //métodos abstractos para subclases
     public abstract void count();
     public abstract void calculateFoodRation();
+
+    public static int getTotalAnimals(){
+        return totalAnimals;
+    }
 
     //métdo de alimentacion
     public void comer(String comida){
@@ -68,8 +68,58 @@ public abstract class Animal implements MedicalCare {
     }
 
     @Override
-    public ControlMedico[] getMedicalHistory() {
-        return this.medicalHistory;
+    public ControlMedico getMedicalHistory() {
+        if (checkupCount == 0){
+            return "Sin historial médico.";
+        }
+        String report = "Historial de " + id + ":\n";
+
+        for (int i = 0; i < checkupCount; i++){
+            report += "- " + medicalHistory[i] + "\n";
+        }
+        return report;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(id, animal.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id='" + id + '\'' +
+                ", weight=" + weight +
+                ", age=" + age +
+                ", species='" + species + '\'' +
+                ", state=" + state +
+                ", active=" + active +
+                '}';
+    }
+
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
     public String getLastCheckup() {
         return lastCheckup;

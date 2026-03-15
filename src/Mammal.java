@@ -1,15 +1,19 @@
 public class Mammal extends Animal {
+
+    private static int totalMammals = 0;
+
     public Mammal(String id, double weight, int age, String species) {
         super(id, weight, age, species);
+
+        totalMammals++;
+    }
+
+    public static int getTotalMammals() {
+        return totalMammals;
     }
 
     @Override
-    public void count() {
-
-    }
-
-    @Override
-    public void calculateFoodRation() {
-
+    public double calculateFoodRation() {
+        return this.getWeight() * 0.05;
     }
 }
