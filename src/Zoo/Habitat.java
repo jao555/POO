@@ -1,7 +1,5 @@
 package Zoo;
 
-import java.sql.SQLOutput;
-
 public class Habitat {
     private int id;
     private int capacity;
@@ -14,7 +12,7 @@ public class Habitat {
     public Habitat(int id, int capacity, String name, CleaningDays cleaningDay, int numberAnimals){
         this.id=id;
         this.capacity=capacity;
-        this.name=name;
+        this.name=textFormat.formatString(name);
         this.cleaningDay=cleaningDay;
         this.numberAnimals=numberAnimals;
     }
@@ -33,7 +31,7 @@ public class Habitat {
         this.addAnimal=addAnimal;
         int totalAnimals=this.numberAnimals+addAnimal;
         if (totalAnimals>this.capacity) {
-            System.out.println("La capacidad máxima fue excedida. Ya no se puede agregar más animales");
+            throw new IllegalArgumentException("La capacidad máxima fue excedida. Ya no se puede agregar más animales");
         } else{
             this.numberAnimals=totalAnimals;
             if (this.numberAnimals==this.capacity){
@@ -49,7 +47,7 @@ public class Habitat {
         this.removeAnimal=removeAnimal;
         int totalAnimals=this.numberAnimals-removeAnimal;
         if (totalAnimals < 0){
-            System.out.println("Zoo.Habitat vacia. No puede remover animales.");
+            throw new IllegalArgumentException("Habitat vacia. No puede remover animales.");
         }else{
             this.numberAnimals=totalAnimals;
             if(numberAnimals==0){
