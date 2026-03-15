@@ -1,6 +1,4 @@
 public class Empleado {
-    private int horaInicio;
-    private int horaFinal;
     private String name;
     private int id;
     private String schedule;
@@ -31,7 +29,7 @@ public class Empleado {
     }
 
     public void realizarTrabajo(String actividad){
-        System.out.println(name + "registro la actividad: "+ actividad);
+        System.out.println(name+'\''+ "realizar la actividad: "+ actividad);
     }
 
 }

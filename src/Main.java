@@ -1,21 +1,24 @@
 public class Main {
     public static void main(String[] args){
-        // 1️⃣ Crear empleados
+        // Crear empleados
         Veterinario vet = new Veterinario(1, "Ana", "9-17", "Mamíferos");
         Criador criador = new Criador(2, "Carlos", "8-16", "Zona A");
+        Empleado nando=new Empleado(2,"gabriel","12-4");
 
-        // 2️⃣ Crear animales
+        // Crear animales
         Mammal leon = new Mammal("L001", 200, 5, "León");
         Mammal loro = new Mammal("A001", 1.2, 2, "Loro");
         Mammal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso");
 
-        // Veterinario regijhstra chequeos
+        // Veterinario regitra chequeos
         ControlMedico checkLeon = new ControlMedico("2026-03-13", "Chequeo normal", vet);
         ControlMedico checkLoro = new ControlMedico("2026-03-13", "Alas saludables", vet);
         ControlMedico checkLeon2 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
+        ControlMedico checkLeon3 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
 
         vet.registerCheckup(leon, checkLeon);
-        vet.registerCheckup(leon,checkLeon2);
+        vet.registerCheckup(leon, checkLeon3);
+        vet.registerCheckup(leon, checkLeon2);
         vet.registerCheckup(loro, checkLoro);
 
         // Criador alimenta animales
@@ -37,5 +40,7 @@ public class Main {
 
         // Veterinario realiza trabajo
         vet.realizarTrabajo("chequeos veterinarios");
+        criador.alimentarAnimal(leon,"mondongo");
+        nando.realizarTrabajo("Trabajando");
     }
 }

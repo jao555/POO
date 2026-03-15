@@ -21,6 +21,6 @@ public class Criador extends Empleado {
 
     @Override
     public void realizarTrabajo(String actividad) {
-        System.out.println(getName() + " está alimentando animales en " + workZone);
+        System.out.println(getName() + " está " +actividad+"en"+ workZone);
     }
 }
