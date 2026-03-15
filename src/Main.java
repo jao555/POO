@@ -6,20 +6,21 @@ public class Main {
         Empleado nando=new Empleado(2,"gabriel","12-4");
 
         // Crear animales
-        Mammal leon = new Mammal("L001", 200, 5, "León");
-        Mammal loro = new Mammal("A001", 1.2, 2, "Loro");
-        Mammal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso");
+        Animal leon = new Mammal("L001", 200, 5, "León");
+        Animal loro = new Mammal("A001", 1.2, 2, "Loro");
+        Animal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso");
 
         // Veterinario regitra chequeos
         ControlMedico checkLeon = new ControlMedico("2026-03-13", "Chequeo normal", vet);
-        ControlMedico checkLoro = new ControlMedico("2026-03-13", "Alas saludables", vet);
+        //ControlMedico checkLoro = new ControlMedico("2026-03-13", "Alas saludables", vet);
         ControlMedico checkLeon2 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
         ControlMedico checkLeon3 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
 
         vet.registerCheckup(leon, checkLeon);
         vet.registerCheckup(leon, checkLeon3);
         vet.registerCheckup(leon, checkLeon2);
-        vet.registerCheckup(loro, checkLoro);
+        System.out.println(loro.generateMedicalReport());
+
 
         // Criador alimenta animales
         criador.realizarTrabajo("alimentación");

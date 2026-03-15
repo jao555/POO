@@ -1,4 +1,4 @@
-public class Reptil extends Animal{
+public abstract class Reptil extends Animal{
 
     private static int totalReptiles = 0;
 
@@ -11,6 +11,10 @@ public class Reptil extends Animal{
     @Override
     public double calculateFoodRation() {
         return this.getWeight() * 0.02;
+    }
+    @Override
+    public void count() {
+        System.out.println("Total de mamíferos registrados: " + totalReptiles);
     }
 
     public static int getTotalReptiles() {

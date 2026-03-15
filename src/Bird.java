@@ -12,8 +12,13 @@ public class Bird extends Animal{
     public double calculateFoodRation() {
         return this.getWeight() * 0.10;
     }
+    @Override
+    public void count() {
+        System.out.println("Total de mamíferos registrados: " + totalBirds);
+    }
 
     public static int getTotalBirds() {
         return totalBirds;
     }
+
 }

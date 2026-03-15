@@ -4,12 +4,16 @@ public class Mammal extends Animal {
 
     public Mammal(String id, double weight, int age, String species) {
         super(id, weight, age, species);
-
         totalMammals++;
     }
 
     public static int getTotalMammals() {
         return totalMammals;
+    }
+    // Implementación del método abstracto de Animal
+    @Override
+    public void count() {
+        System.out.println("Total de mamíferos registrados: " + totalMammals);
     }
 
     @Override

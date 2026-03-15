@@ -41,8 +41,7 @@ public abstract class Animal implements MedicalCare {
 
     //métodos abstractos para subclases
     public abstract void count();
-    public abstract void calculateFoodRation();
-
+    public abstract double calculateFoodRation();
     public static int getTotalAnimals(){
         return totalAnimals;
     }
@@ -68,14 +67,16 @@ public abstract class Animal implements MedicalCare {
     }
 
     @Override
-    public ControlMedico getMedicalHistory() {
-        if (checkupCount == 0){
-            return "Sin historial médico.";
-        }
-        String report = "Historial de " + id + ":\n";
+    public ControlMedico[] getMedicalHistory() {
+        return medicalHistory;
+    }
 
-        for (int i = 0; i < checkupCount; i++){
-            report += "- " + medicalHistory[i] + "\n";
+    public String generateMedicalReport() {
+        if (checkupCount == 0) return "Sin historial médico.";
+
+        String report = "Historial de " + id + ":\n";
+        for (int i = 0; i < checkupCount; i++) {
+            report += "- " + medicalHistory[i].toString() + "\n";
         }
         return report;
     }
