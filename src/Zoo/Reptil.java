@@ -1,3 +1,5 @@
+package Zoo;
+
 public abstract class Reptil extends Animal{
 
     private static int totalReptiles = 0;

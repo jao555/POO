@@ -37,7 +37,7 @@ public class Habitat {
             if (this.numberAnimals==this.capacity){
                 System.out.println("La capacidad máxima fue alcanzada.");
             }else{
-                System.out.println("Animal agregado. Tiene "+(capacity-numberAnimals)+"espacios disponibles");
+                System.out.println("Zoo.Animal agregado. Tiene "+(capacity-numberAnimals)+"espacios disponibles");
             }
         }
         return numberAnimals;
@@ -53,7 +53,7 @@ public class Habitat {
             if(numberAnimals==0){
                 System.out.println("Zoo.Habitat vacia. Tiene "+this.capacity+" espacios disponibles.");
             }else {
-                System.out.println("Animal removido. Tiene "+(this.capacity-this.numberAnimals)+" espacios disponibles.");
+                System.out.println("Zoo.Animal removido. Tiene "+(this.capacity-this.numberAnimals)+" espacios disponibles.");
             }
         }
         return numberAnimals;

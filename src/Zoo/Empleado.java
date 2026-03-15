@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Empleado {
     private String name;
     private int id;

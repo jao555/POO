@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Bird extends Animal{
 
     private static int totalBirds = 0;

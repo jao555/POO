@@ -1,3 +1,5 @@
+package Zoo;
+
 public class ControlMedico {
     private String fecha;
     private String observacion;
@@ -28,7 +30,7 @@ public class ControlMedico {
 
     @Override
     public String toString() {
-        return "ControlMedico{" +
+        return "Zoo.ControlMedico{" +
                 "fecha='" + fecha + '\'' +
                 ", observacion='" + observacion + '\'' +
                 ", veterinario=" + veterinario.getName() +
