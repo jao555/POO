@@ -61,7 +61,7 @@ public class ZooManager {
         cantidadEmpleados++;
     }
 
-    //VGestion registro de visitante
+    //Gestion registro de visitante
     public void registrarVisitante(Visitante visitante) {
         if (cantidadVisitantes >= todosLosVisitantes.length) {
             Visitante[] nuevoArray = new Visitante[todosLosVisitantes.length * 2];

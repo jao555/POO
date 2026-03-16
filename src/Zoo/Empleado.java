@@ -7,7 +7,7 @@ public class Empleado {
 
     public Empleado(int id,String name,String schedule){
         this.id=id;
-        this.name=name;
+        this.name=textFormat.formatString(name);
         this.schedule=schedule;
     }
     //Getters y setters
