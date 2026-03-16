@@ -1,52 +1,74 @@
 package Zoo;
 
 public class ZooManager {
-    private Animal[] todosLosAnimales;
-    private int cantidadAnimales;
 
-    public ZooManager(){
-        this.todosLosAnimales = new Animal[2];
-        this.cantidadAnimales = 0;
-    }
+    private Animal[] todosLosAnimales = new Animal[2];
+    private int cantidadAnimales = 0;
 
-    public int getCantidadAnimales() {
-        return cantidadAnimales;
-    }
+    private Empleado[] todosLosEmpleados = new Empleado[2];
+    private int cantidadEmpleados = 0;
 
-    // REDIMENSIONAMIENTO MANUAL
-    public void registrarAnimal(Animal animal) {
+    private Visitante[] todosLosVisitantes = new Visitante[2];
+    private int cantidadVisitantes = 0;
+
+    // --- ANIMALES ---
+    public void registrarAnimal(Animal animal) throws RegistroDuplicadosException {
+        for (int i = 0; i < cantidadAnimales; i++) {
+            if (todosLosAnimales[i].equals(animal)) {
+                throw new RegistroDuplicadosException("Error: El animal con ID " + animal.getId() + " ya está registrado.");
+            }
+        }
         if (cantidadAnimales >= todosLosAnimales.length) {
             Animal[] nuevoArray = new Animal[todosLosAnimales.length * 2];
-            for (int i = 0; i < todosLosAnimales.length; i++) {
-                nuevoArray[i] = todosLosAnimales[i];
-            }
+            for (int i = 0; i < todosLosAnimales.length; i++) nuevoArray[i] = todosLosAnimales[i];
             todosLosAnimales = nuevoArray;
-            System.out.println(">> Sistema: Array de animales redimensionado a " + todosLosAnimales.length);
         }
         todosLosAnimales[cantidadAnimales] = animal;
         cantidadAnimales++;
     }
 
-    // BÚSQUEDA
-    public Animal buscarAnimalPorId(String id) throws EntidadNoEncontradaException {
+    public Animal buscarAnimalPorId(String id) throws InvalidAnimalException {
         for (int i = 0; i < cantidadAnimales; i++) {
-            if (todosLosAnimales[i] != null &&
-                    todosLosAnimales[i].getId().equals(id) &&
-                    todosLosAnimales[i].isActive()) {
+            if (todosLosAnimales[i] != null && todosLosAnimales[i].getId().equals(id) && todosLosAnimales[i].isActive()) {
                 return todosLosAnimales[i];
             }
         }
-        throw new EntidadNoEncontradaException("El animal con ID " + id + " no fue encontrado o está inactivo.");
+        throw new InvalidAnimalException("Animal " + id + " no encontrado o inactivo.");
     }
 
-    // ELIMINACIÓN LÓGICA
     public void eliminarAnimal(String id) {
         try {
-            Animal animalAEliminar = buscarAnimalPorId(id);
-            animalAEliminar.darDeBaja();
-        } catch (EntidadNoEncontradaException e) {
-            System.out.println("Error al intentar eliminar: " + e.getMessage());
+            Animal animal = buscarAnimalPorId(id);
+            animal.darDeBaja();
+        } catch (InvalidAnimalException e) {
+            System.out.println(e.getMessage());
         }
     }
 
+    // --- EMPLEADOS ---
+    public void registrarEmpleado(Empleado empleado) throws RegistroDuplicadosException {
+        for (int i = 0; i < cantidadEmpleados; i++) {
+            if (todosLosEmpleados[i].equals(empleado)) {
+                throw new RegistroDuplicadosException("Error: El empleado ID " + empleado.getId() + " ya existe.");
+            }
+        }
+        if (cantidadEmpleados >= todosLosEmpleados.length) {
+            Empleado[] nuevoArray = new Empleado[todosLosEmpleados.length * 2];
+            for (int i = 0; i < todosLosEmpleados.length; i++) nuevoArray[i] = todosLosEmpleados[i];
+            todosLosEmpleados = nuevoArray;
+        }
+        todosLosEmpleados[cantidadEmpleados] = empleado;
+        cantidadEmpleados++;
+    }
+
+    // --- VISITANTES ---
+    public void registrarVisitante(Visitante visitante) {
+        if (cantidadVisitantes >= todosLosVisitantes.length) {
+            Visitante[] nuevoArray = new Visitante[todosLosVisitantes.length * 2];
+            for (int i = 0; i < todosLosVisitantes.length; i++) nuevoArray[i] = todosLosVisitantes[i];
+            todosLosVisitantes = nuevoArray;
+        }
+        todosLosVisitantes[cantidadVisitantes] = visitante;
+        cantidadVisitantes++;
+    }
 }

@@ -1,50 +1,41 @@
 package Zoo;
 
 public class Main {
-    public static void main(String[] args){
-        // Crear empleados
+    public static void main(String[] args) {
+        System.out.println("=== INICIANDO SISTEMA ZOOLÓGICO ===");
+
+        ZooManager manager = new ZooManager();
         Veterinario vet = new Veterinario(1, "Ana", "9-17", "Mamíferos");
-        Criador criador = new Criador(2, "Carlos", "8-16", "Zona A");
-        Empleado nando=new Empleado(4,"gabriel","12-4");
-
-        // Crear animales
         Animal leon = new Mammal("L001", 200, 5, "León", "Pelaje");
-        Animal loro = new Mammal("A001", 1.2, 2, "Loro", "Plumas");
-        Animal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso", "Escamas");
+        Animal loro = new Bird("A001", 1.2, 2, "Loro", 0.5);
 
-        // Zoo.Veterinario regitra chequeos
-        ControlMedico checkLeon = new ControlMedico("2026-03-13", "Chequeo normal", vet);
-        //Zoo.ControlMedico checkLoro = new Zoo.ControlMedico("2026-03-13", "Alas saludables", vet);
-        ControlMedico checkLeon2 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
-        ControlMedico checkLeon3 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
-
-        vet.registerCheckup(leon, checkLeon);
-        vet.registerCheckup(leon, checkLeon3);
-        vet.registerCheckup(leon, checkLeon2);
-        System.out.println(loro.generateMedicalReport());
-
-
-        // Zoo.Criador alimenta animales
-        criador.realizarTrabajo("alimentación");
-        leon.comer("Carne");
-        loro.comer("Semillas");
-        pezPayaso.comer("Alimento para peces");
-
-        // Mostrar historial médico de animales
-        System.out.println("\nHistorial de " + leon.getSpecies() + ":");
-        for (ControlMedico c : leon.getMedicalHistory()) {
-            if (c != null) System.out.println(c);
+        try {
+            manager.registrarEmpleado(vet);
+            manager.registrarAnimal(leon);
+            manager.registrarAnimal(loro);
+            // manager.registrarAnimal(leon); // Descomentar para probar error duplicado
+        } catch (RegistroDuplicadosException e) {
+            System.out.println("❌ " + e.getMessage());
         }
 
-        System.out.println("\nHistorial de " + loro.getSpecies() + ":");
-        for (ControlMedico c : loro.getMedicalHistory()) {
-            if (c != null) System.out.println(c);
+        System.out.println("\n--- Prueba Hábitat ---");
+        Habitat sabana = new Habitat(1, 1,"Agua", CleaningDays.Monday );
+        try {
+            sabana.addAnimals(leon);
+            sabana.addAnimals(loro); // Falla: capacidad es 1
+        } catch (ExtendedCapicityException e) {
+            System.out.println("❌ " + e.getMessage());
         }
 
-        // Zoo.Veterinario realiza trabajo
-        vet.realizarTrabajo("chequeos veterinarios");
-        criador.alimentarAnimal(leon,"mondongo");
-        nando.realizarTrabajo("Trabajando");
+        System.out.println("\n--- Prueba Búsqueda y Eliminación Lógica ---");
+        try {
+            Animal encontrado = manager.buscarAnimalPorId("L001");
+            System.out.println("✅ Encontrado: " + encontrado.getSpecies());
 
+            manager.eliminarAnimal("L001"); // Eliminación lógica
+            manager.buscarAnimalPorId("L001"); // Falla: inactivo
+        } catch (InvalidAnimalException e) {
+            System.out.println("❌ " + e.getMessage());
+        }
     }
 }
