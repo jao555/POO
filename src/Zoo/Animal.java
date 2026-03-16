@@ -40,6 +40,21 @@ public abstract class Animal implements MedicalCare {
     public String getId() {
         return id;
     }
+    public State getState() {
+        return state;
+    }
+    public void setState(State state) {
+        this.state = state;
+    }
+    public boolean isActive() {
+        return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    public String getLastCheckup() {
+        return lastCheckup;
+    }
 
     //métodos abstractos para subclases
     public abstract void count();
@@ -51,6 +66,11 @@ public abstract class Animal implements MedicalCare {
     //métdo de alimentacion
     public void comer(String comida){
         System.out.println(species + " con ID " + id + " está comiendo: " + comida);
+    }
+
+    public void darDeBaja() {
+        this.active = false;
+        System.out.println("El animal " + this.id + " ha sido dado de baja.");
     }
 
     @Override
@@ -98,7 +118,7 @@ public abstract class Animal implements MedicalCare {
 
     @Override
     public String toString() {
-        return "Zoo.Animal{" +
+        return "Animal{" +
                 "id='" + id + '\'' +
                 ", weight=" + weight +
                 ", age=" + age +
@@ -108,23 +128,4 @@ public abstract class Animal implements MedicalCare {
                 '}';
     }
 
-
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-    public String getLastCheckup() {
-        return lastCheckup;
-    }
 }
