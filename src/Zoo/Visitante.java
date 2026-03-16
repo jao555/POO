@@ -13,14 +13,22 @@ public class Visitante {
         this.active = true;
     }
 
-    // Getters y Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getTipoEntrada() { return tipoEntrada; }
-    public void setTipoEntrada(String tipoEntrada) { this.tipoEntrada = tipoEntrada; }
-    public boolean isActive() { return active; }
+    // Getters
+    public String getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTipoEntrada() {
+        return tipoEntrada;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
 
     public void registrarSalida() {
         this.active = false;

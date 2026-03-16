@@ -46,12 +46,7 @@ public class ZooManager {
     }
 
     // --- EMPLEADOS ---
-    public void registrarEmpleado(Empleado empleado) throws RegistroDuplicadosException {
-        for (int i = 0; i < cantidadEmpleados; i++) {
-            if (todosLosEmpleados[i].equals(empleado)) {
-                throw new RegistroDuplicadosException("Error: El empleado ID " + empleado.getId() + " ya existe.");
-            }
-        }
+    public void registrarEmpleado(Empleado empleado) {
         if (cantidadEmpleados >= todosLosEmpleados.length) {
             Empleado[] nuevoArray = new Empleado[todosLosEmpleados.length * 2];
             for (int i = 0; i < todosLosEmpleados.length; i++) nuevoArray[i] = todosLosEmpleados[i];
