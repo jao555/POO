@@ -86,8 +86,8 @@ public class Main {
             System.out.println("Excepción capturada : " + e.getMessage());
         }
 
-
-        System.out.println();
+        sabana.removeAnimal("L001");
+        sabana.addAnimals(leon);
 
     }
 }

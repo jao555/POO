@@ -60,4 +60,32 @@ public class Habitat {
         System.out.println("Animal " + animal.getSpecies() + " agregado al hábitat " + name + ". Espacios disponibles: " + (capacity - numberAnimals));
     }
 
+    public void removeAnimal(String animalId) throws InvalidAnimalException {
+        boolean encontrado = false;
+
+        for (int i = 0; i < numberAnimals; i++) {
+            // Buscamos al animal por su ID
+            if (animalsInHabitat[i] != null && animalsInHabitat[i].getId().equals(animalId)) {
+                encontrado = true;
+
+                // Desplazamos todos los animales un espacio hacia la izquierda para tapar el hueco
+                for (int j = i; j < numberAnimals - 1; j++) {
+                    animalsInHabitat[j] = animalsInHabitat[j + 1];
+                }
+
+                // Vaciamos la última posición y reducimos el contador
+                animalsInHabitat[numberAnimals - 1] = null;
+                numberAnimals--;
+
+                System.out.println("El animal " + animalId + " ha sido retirado del hábitat " + name + ". Espacios disponibles: " + (capacity - numberAnimals));
+                break; // Terminamos el ciclo porque ya lo encontramos y sacamos
+            }
+        }
+
+        // Si termina el ciclo y no lo encontró, lanzamos excepción
+        if (!encontrado) {
+            throw new InvalidAnimalException("Error: El animal " + animalId + " no se encuentra en el hábitat " + name + ".");
+        }
+    }
+
 }
