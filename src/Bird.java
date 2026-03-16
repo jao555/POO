@@ -1,10 +1,12 @@
 public class Bird extends Animal{
 
+    private double wingspan;
     private static int totalBirds = 0;
 
-    public Bird(String id, double weight, int age, String species){
+    public Bird(String id, double weight, int age, String species, double wingspan){
         super(id, weight, age, species);
 
+        this.wingspan = wingspan;
         totalBirds++;
     }
 
@@ -14,7 +16,11 @@ public class Bird extends Animal{
     }
     @Override
     public void count() {
-        System.out.println("Total de mamíferos registrados: " + totalBirds);
+        System.out.println("Total de aves registrados: " + totalBirds);
+    }
+
+    public double getWingspan() {
+        return wingspan;
     }
 
     public static int getTotalBirds() {

@@ -6,9 +6,9 @@ public class Main {
         Empleado nando=new Empleado(2,"gabriel","12-4");
 
         // Crear animales
-        Animal leon = new Mammal("L001", 200, 5, "León");
-        Animal loro = new Mammal("A001", 1.2, 2, "Loro");
-        Animal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso");
+        Animal leon = new Mammal("L001", 200, 5, "León", "Pelaje");
+        Animal loro = new Mammal("A001", 1.2, 2, "Loro", "Plumas");
+        Animal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso", "Escamas");
 
         // Veterinario regitra chequeos
         ControlMedico checkLeon = new ControlMedico("2026-03-13", "Chequeo normal", vet);
