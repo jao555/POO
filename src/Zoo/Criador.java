@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Criador extends Empleado {
 
     private String workZone;

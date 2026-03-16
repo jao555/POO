@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Main {
     public static void main(String[] args){
         // Crear empleados
@@ -10,9 +12,9 @@ public class Main {
         Animal loro = new Mammal("A001", 1.2, 2, "Loro", "Plumas");
         Animal pezPayaso = new Mammal("P001", 0.5, 1, "Pez Payaso", "Escamas");
 
-        // Veterinario regitra chequeos
+        // Zoo.Veterinario regitra chequeos
         ControlMedico checkLeon = new ControlMedico("2026-03-13", "Chequeo normal", vet);
-        //ControlMedico checkLoro = new ControlMedico("2026-03-13", "Alas saludables", vet);
+        //Zoo.ControlMedico checkLoro = new Zoo.ControlMedico("2026-03-13", "Alas saludables", vet);
         ControlMedico checkLeon2 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
         ControlMedico checkLeon3 = new ControlMedico("2026-03-13", "Chequeo dientes", vet);
 
@@ -22,7 +24,7 @@ public class Main {
         System.out.println(loro.generateMedicalReport());
 
 
-        // Criador alimenta animales
+        // Zoo.Criador alimenta animales
         criador.realizarTrabajo("alimentación");
         leon.comer("Carne");
         loro.comer("Semillas");
@@ -39,7 +41,7 @@ public class Main {
             if (c != null) System.out.println(c);
         }
 
-        // Veterinario realiza trabajo
+        // Zoo.Veterinario realiza trabajo
         vet.realizarTrabajo("chequeos veterinarios");
         criador.alimentarAnimal(leon,"mondongo");
         nando.realizarTrabajo("Trabajando");

@@ -1,3 +1,5 @@
+package Zoo;
+
 import java.util.Objects;
 
 public abstract class Animal implements MedicalCare {
@@ -96,7 +98,7 @@ public abstract class Animal implements MedicalCare {
 
     @Override
     public String toString() {
-        return "Animal{" +
+        return "Zoo.Animal{" +
                 "id='" + id + '\'' +
                 ", weight=" + weight +
                 ", age=" + age +

@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Mammal extends Animal {
 
     private String furType;
@@ -12,7 +14,7 @@ public class Mammal extends Animal {
     public static int getTotalMammals() {
         return totalMammals;
     }
-    // Implementación del método abstracto de Animal
+    // Implementación del método abstracto de Zoo.Animal
     @Override
     public void count() {
         System.out.println("Total de mamíferos registrados: " + totalMammals);

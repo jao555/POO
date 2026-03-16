@@ -1,3 +1,5 @@
+package Zoo;
+
 public class Veterinario extends Empleado{
     private String especialidad;
 
