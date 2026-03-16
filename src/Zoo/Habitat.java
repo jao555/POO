@@ -6,16 +6,17 @@ public class Habitat {
     public String name;
     private CleaningDays cleaningDay;
     private int numberAnimals;
-    private int addAnimal;
-    private int removeAnimal;
+    private Animal[] animalsInHabitat;
 
 
-    public Habitat(int id, int capacity, String name, CleaningDays cleaningDay, int numberAnimals){
+
+    public Habitat(int id, int capacity, String name, CleaningDays cleaningDay){
         this.id=id;
         this.capacity=capacity;
         this.name=textFormat.formatString(name);
         this.cleaningDay=cleaningDay;
-        this.numberAnimals=numberAnimals;
+        this.animalsInHabitat = new Animal[capacity];
+        this.numberAnimals = 0;
     }
 
     //Getters y setters
@@ -44,42 +45,20 @@ public class Habitat {
     public void cleaningVerification(CleaningDays cleaningDay){
         this.cleaningDay=cleaningDay;
         if(cleaningDay == CleaningDays.Monday || cleaningDay ==CleaningDays.Wendsday || cleaningDay==CleaningDays.Friday || cleaningDay == CleaningDays.Sunday){
-            System.out.println("Es día de limpieza.");
+            System.out.println("Es día de limpieza en " + this.name);
         }else{
-            System.out.println("Hoy no se programo limpieza.");
+            System.out.println("Hoy no se programo limpieza en " + this.name);
         }
     }
 
-    public int addAnimals(int addAnimal){
-        this.addAnimal=addAnimal;
-        int totalAnimals=this.numberAnimals+addAnimal;
-        if (totalAnimals>this.capacity) {
-            throw new IllegalArgumentException("La capacidad máxima fue excedida. Ya no se puede agregar más animales");
-        } else{
-            this.numberAnimals=totalAnimals;
-            if (this.numberAnimals==this.capacity){
-                System.out.println("La capacidad máxima fue alcanzada.");
-            }else{
-                System.out.println("Zoo.Animal agregado. Tiene "+(capacity-numberAnimals)+"espacios disponibles");
-            }
-        }
-        return numberAnimals;
-    }
+    public void addAnimals(Animal animal) throws ExtendedCapicityException{
+        if (numberAnimals >= capacity) {
 
-    public int removeAnimals(int removeAnimal){
-        this.removeAnimal=removeAnimal;
-        int totalAnimals=this.numberAnimals-removeAnimal;
-        if (totalAnimals < 0){
-            throw new IllegalArgumentException("Habitat vacia. No puede remover animales.");
-        }else{
-            this.numberAnimals=totalAnimals;
-            if(numberAnimals==0){
-                System.out.println("Zoo.Habitat vacia. Tiene "+this.capacity+" espacios disponibles.");
-            }else {
-                System.out.println("Zoo.Animal removido. Tiene "+(this.capacity-this.numberAnimals)+" espacios disponibles.");
-            }
+            throw new ExtendedCapicityException("La capacidad máxima del hábitat " + name + " fue excedida. No se puede agregar al animal: " + animal.getId());
         }
-        return numberAnimals;
+        animalsInHabitat[numberAnimals] = animal;
+        numberAnimals++;
+        System.out.println("Animal " + animal.getSpecies() + " agregado al hábitat " + name + ". Espacios disponibles: " + (capacity - numberAnimals));
     }
 
 }
