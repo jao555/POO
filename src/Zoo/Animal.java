@@ -9,11 +9,12 @@ public abstract class Animal implements MedicalCare {
     private String species;
     private ControlMedico[] medicalHistory;
     private State state;
-    private int checkupCount;
+    private int checkupCount;  //contador para redimendionamiento del array
     private String lastCheckup;
     private static int totalAnimals = 0;
-    private boolean active;
+    private boolean active;  //Atributo para eliminacion
 
+    //Constructor
     public Animal(String id, double weight, int age, String species){
         this.id = id;
         this.weight = weight;
@@ -27,7 +28,7 @@ public abstract class Animal implements MedicalCare {
         totalAnimals++;
 
     }
-    //getters and setters
+    //getters
     public double getWeight() {
         return weight;
     }
@@ -39,6 +40,9 @@ public abstract class Animal implements MedicalCare {
     }
     public String getId() {
         return id;
+    }
+    public static int getTotalAnimals(){
+        return totalAnimals;
     }
     public State getState() {
         return state;
@@ -59,24 +63,12 @@ public abstract class Animal implements MedicalCare {
     //métodos abstractos para subclases
     public abstract void count();
     public abstract double calculateFoodRation();
-    public static int getTotalAnimals(){
-        return totalAnimals;
-    }
 
-    //métdo de alimentacion
-    public void comer(String comida){
-        System.out.println(species + " con ID " + id + " está comiendo: " + comida);
-    }
-
-    public void darDeBaja() {
-        this.active = false;
-        System.out.println("El animal " + this.id + " ha sido dado de baja.");
-    }
-
+    //Registro de un chequeo médico(redimensionamiento del array)
     @Override
     public void registerCheckup(ControlMedico control) {
         if (checkupCount >=medicalHistory.length) {
-            //Redimensionamiento
+            //Redimensionamiento con duplicado
             ControlMedico[] newArray = new ControlMedico[medicalHistory.length * 2];
             for(int i = 0; i < medicalHistory.length; i++) {
                 newArray[i] = medicalHistory[i];
@@ -88,11 +80,7 @@ public abstract class Animal implements MedicalCare {
         lastCheckup=control.getFecha();
     }
 
-    @Override
-    public ControlMedico[] getMedicalHistory() {
-        return medicalHistory;
-    }
-
+    //Genera un reporte detallado del historial médico
     public String generateMedicalReport() {
         if (checkupCount == 0) return "Sin historial médico.";
 
@@ -103,6 +91,12 @@ public abstract class Animal implements MedicalCare {
         return report;
     }
 
+    @Override
+    public ControlMedico[] getMedicalHistory() {
+        return medicalHistory;
+    }
+
+    //Sobreescritura de métodos de la clase object.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,7 +112,7 @@ public abstract class Animal implements MedicalCare {
 
     @Override
     public String toString() {
-        return "Animal{" +
+        return "Zoo.Animal{" +
                 "id='" + id + '\'' +
                 ", weight=" + weight +
                 ", age=" + age +

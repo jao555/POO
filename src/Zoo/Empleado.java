@@ -31,7 +31,7 @@ public class Empleado {
     }
 
     public void realizarTrabajo(String actividad){
-        System.out.println(name+'\''+ "realizar la actividad: "+ actividad);
+        System.out.println(name+'\''+ "realiza la actividad: "+ actividad);
     }
 
 }

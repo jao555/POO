@@ -3,7 +3,6 @@ package Zoo;
 public class textFormat {
     private textFormat(){
     }
-
     public static String formatString(String text){
         if (text==null || text.trim().isEmpty()){
             return text;

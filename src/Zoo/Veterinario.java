@@ -8,22 +8,20 @@ public class Veterinario extends Empleado{
         this.especialidad=especialidad;
     }
 
+    //Getters
     public String getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
-
+    //Método para registrar un chequeo de un animal en el array de objetos controlMedico
     public void registerCheckup(Animal animal, ControlMedico control) {
         animal.registerCheckup(control);
-        System.out.println(getId() + " registró un chequeo a " + animal.getId());
+        System.out.println(getName() + " registró un chequeo a " + animal.getId());
     }
 
     @Override
     public void realizarTrabajo(String actividad) {
-        System.out.println(getId() + " está realizando chequeos veterinarios");
+        System.out.println(getName() + " está realizando chequeos veterinarios");
     }
 
 }

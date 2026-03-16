@@ -16,11 +16,13 @@ public class Criador extends Empleado {
         this.workZone = workZone;
     }
 
+    //Función para especificar animal a alimentar
     public void alimentarAnimal(Animal animal, String comida) {
         System.out.println(getName() + " alimentó a " + animal.getId() + " con " + comida);
         animal.comer(comida);  // suponiendo metodo en animal
     }
 
+    //Función de empleado sobreescrita
     @Override
     public void realizarTrabajo(String actividad) {
         System.out.println(getName() + " está " +actividad+"en"+ workZone);

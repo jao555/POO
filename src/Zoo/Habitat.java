@@ -9,6 +9,7 @@ public class Habitat {
     private int addAnimal;
     private int removeAnimal;
 
+
     public Habitat(int id, int capacity, String name, CleaningDays cleaningDay, int numberAnimals){
         this.id=id;
         this.capacity=capacity;
@@ -17,11 +18,33 @@ public class Habitat {
         this.numberAnimals=numberAnimals;
     }
 
+    //Getters y setters
+    public int getId() {
+        return id;
+    }
+    public int getCapacity() {
+        return capacity;
+    }
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+    public int getNumberAnimals() {
+        return numberAnimals;
+    }
+    public void setNumberAnimals(int numberAnimals) {
+        this.numberAnimals = numberAnimals;
+    }
+    public CleaningDays getCleaningDay() {
+        return cleaningDay;
+    }
+    public void setCleaningDay(CleaningDays cleaningDay) {
+        this.cleaningDay = cleaningDay;
+    }
+
     public void cleaningVerification(CleaningDays cleaningDay){
         this.cleaningDay=cleaningDay;
         if(cleaningDay == CleaningDays.Monday || cleaningDay ==CleaningDays.Wendsday || cleaningDay==CleaningDays.Friday || cleaningDay == CleaningDays.Sunday){
             System.out.println("Es día de limpieza.");
-
         }else{
             System.out.println("Hoy no se programo limpieza.");
         }
@@ -59,36 +82,4 @@ public class Habitat {
         return numberAnimals;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public int getNumberAnimals() {
-        return numberAnimals;
-    }
-
-    public void setNumberAnimals(int numberAnimals) {
-        this.numberAnimals = numberAnimals;
-    }
-
-    public CleaningDays getCleaningDay() {
-        return cleaningDay;
-    }
-
-    public void setCleaningDay(CleaningDays cleaningDay) {
-        this.cleaningDay = cleaningDay;
-    }
 }
