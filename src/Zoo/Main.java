@@ -5,7 +5,7 @@ public class Main {
         // Crear empleados
         Veterinario vet = new Veterinario(1, "Ana", "9-17", "Mamíferos");
         Criador criador = new Criador(2, "Carlos", "8-16", "Zona A");
-        Empleado nando=new Empleado(2,"gabriel","12-4");
+        Empleado nando=new Empleado(4,"gabriel","12-4");
 
         // Crear animales
         Animal leon = new Mammal("L001", 200, 5, "León", "Pelaje");
@@ -45,5 +45,6 @@ public class Main {
         vet.realizarTrabajo("chequeos veterinarios");
         criador.alimentarAnimal(leon,"mondongo");
         nando.realizarTrabajo("Trabajando");
+
     }
 }

@@ -28,7 +28,7 @@ public abstract class Animal implements MedicalCare {
         totalAnimals++;
 
     }
-    //getters
+    //getters y setters
     public double getWeight() {
         return weight;
     }
@@ -63,6 +63,16 @@ public abstract class Animal implements MedicalCare {
     //métodos abstractos para subclases
     public abstract void count();
     public abstract double calculateFoodRation();
+
+    public void comer(String comida){
+        System.out.println(species + " con ID " + id + " está comiendo: " + comida);
+    }
+
+    public void darDeBaja() {
+        this.active = false;
+        System.out.println("El animal " + this.id + " ha sido dado de baja.");
+    }
+
 
     //Registro de un chequeo médico(redimensionamiento del array)
     @Override
