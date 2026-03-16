@@ -1,5 +1,4 @@
 package Zoo;
-
 import java.util.Objects;
 
 public abstract class Animal implements MedicalCare {
@@ -93,7 +92,6 @@ public abstract class Animal implements MedicalCare {
     //Genera un reporte detallado del historial médico
     public String generateMedicalReport() {
         if (checkupCount == 0) return "Sin historial médico.";
-
         String report = "Historial de " + id + ":\n";
         for (int i = 0; i < checkupCount; i++) {
             report += "- " + medicalHistory[i].toString() + "\n";

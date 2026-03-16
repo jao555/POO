@@ -53,7 +53,6 @@ public class Habitat {
 
     public void addAnimals(Animal animal) throws ExtendedCapicityException{
         if (numberAnimals >= capacity) {
-
             throw new ExtendedCapicityException("La capacidad máxima del hábitat " + name + " fue excedida. No se puede agregar al animal: " + animal.getId());
         }
         animalsInHabitat[numberAnimals] = animal;

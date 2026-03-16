@@ -1,5 +1,5 @@
 package Zoo;
-
+//Clase utilitaria para el manejo y normalización de textos
 public class textFormat {
     private textFormat(){
     }
